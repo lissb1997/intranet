@@ -1,0 +1,14 @@
+{% extends 'index.html'%}
+{% block contenido %}
+<p>{{ consulta }}</p>
+<ul>
+    {% for p in centro_ext %}
+    <li> {{ p.nombreEntidad }} -- {{ p.direccion }} -- {{ p.encargado }} -- {{ p.area }} -- {{ p.categoria }} -- {{
+        p.supervisor }} -- {{ p.telefono }}
+    </li>
+    {% empty %}
+    <p>No hay elementos disponibles.</p>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <title>Intranet</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Intranet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap4/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome-free-5.0.1/css/fontawesome-all.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'OwlCarousel2-2.2.1/owl.carousel.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'OwlCarousel2-2.2.1/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'main_styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'responsive.css' %}">
+    <link rel="static/logo.png">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+
+<div class="super_container">
+    <!-- Header -->
+
+    <header class="header d-flex flex-row">
+        {% block encabezado %} {% endblock %}
+    </header>
+
+    <!-- Menu -->
+    <div class="menu_container menu_mm">
+        {% block menu %} {% endblock %}
+    </div>
+
+    <!-- Home -->
+    <div class="home">
+        {% block contenido %} {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        {% block piedepagina %} {% endblock %}
+    </footer>
+</div>
+
+</body>
+
+<script src="{% static 'jquery-3.2.1.min.js' %}"></script>
+<script src="{% static '/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'greensock/TweenMax.min.js' %}"></script>
+<script src="{% static 'greensock/TimelineMax.min.js' %}"></script>
+<script src="{% static 'scrollmagic/ScrollMagic.min.js' %}"></script>
+<script src="{% static 'greensock/animation.gsap.min.js' %}"></script>
+<script src="{% static 'greensock/ScrollToPlugin.min.js' %}"></script>
+<script src="{% static 'OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'scrollTo/jquery.scrollTo.min.js' %}"></script>
+<script src="{% static 'easing/easing.js' %}"></script>
+<script src="{% static 'custom.js' %}"></script>
+
+
+</html>

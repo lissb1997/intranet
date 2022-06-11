@@ -1,0 +1,14 @@
+{% extends 'manual/principal_manual.html'%}
+{% block resultado %}
+<p>{{ consulta }}</p>
+<ul>
+    {% for p in procedimientos %}
+    <li> {{ p.seccion }} -- {{ p.grupo }} -- {{ p.subgrupo }} -- {{ p.titulo }} -- {{ p.proforma }} -- {{ p.descrip }}
+        -- {{ p.archivo }}
+    </li>
+    {% empty %}
+    <p>No hay procedimientos disponibles.</p>
+    {% endfor %}
+</ul>
+
+{% endblock %}

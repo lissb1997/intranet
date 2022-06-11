@@ -1,0 +1,14 @@
+{% extends 'manual/principal_manual.html' %}
+{% block resultado %}
+
+    <p>{{ consulta }}</p>
+    <ul>
+        {% for p in circulares %}
+            <li> {{ p.anno }} -- {{ p.numero }} -- {{ p.organismo }} -- {{ p.nombre }} -- {{ p.archivo }}
+            </li>
+        {% empty %}
+            <p class="respuesta">No hay circulares disponibles.</p>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

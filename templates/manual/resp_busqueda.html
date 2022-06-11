@@ -1,0 +1,24 @@
+{% extends "manual/indexm.html" %}
+{% load static %}
+{% block contenido %}
+
+<ul>
+    {% for p in circular %}
+    <li> {{ p.anno }} -- {{ p.numero }} -- {{ p.organismo }} -- {{ p.nombre }} -- {{ p.archivo }}
+    </li>
+    {% for p in proced %}
+    <li> {{ p.seccion }} -- {{ p.grupo }} -- {{ p.subgrupo }} -- {{ p.titulo }} -- {{ p.proforma }} -- {{ p.descrip }}
+        -- {{ p.archivo }}
+    </li>
+    {% for p in instruc %}
+    <li> {{ p.tipo }} -- {{ p.doc }} -- {{ p.anno }} -- {{ p.num }} -- {{ p.descrip }} -- {{ p.anexo }} -- {{ p.archivo
+        }} -- {{ p.tema }}
+    </li>
+    {% for p in biblioteca %}
+    <li> {{ p.nombre }} -- {{ p.categoría }} -- {{ p.zip }}
+    </li>
+    {% empty %}
+    <p>No hay coincidencias.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

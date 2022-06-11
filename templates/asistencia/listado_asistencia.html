@@ -1,0 +1,12 @@
+{% extends 'asistencia/principal_asistencia.html' %}
+{% block resultado %}
+    <p>{{ consulta }}</p>
+    <ul>
+        {% for p in biblioteca %}
+            <li> {{ p.nombre }} -- {{ p.categoría }} -- {{ p.zip }}
+            </li>
+        {% empty %}
+            <p class="respuesta">No hay elementos disponibles.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}

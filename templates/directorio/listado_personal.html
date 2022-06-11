@@ -1,0 +1,19 @@
+{% extends 'directorio/principal_directorio.html'%}
+{% block resultado %}
+    <p>{{ consulta }}</p>
+    <ol id="lista">
+         {% for p in personal %}
+            <li>Nombre: {{ p.nombre }} {{ p.apellidos }} 
+                <ol>
+                    <li id=mio>Usuario: {{ p.usuario }} Area:{{ p.area }} Cargo:{{ p.cargo }}
+                         Extencion:{{ p.ext_telef }} Directo:{{ p.telef_dir }} Correo:{{ p.correo }}
+                         Cumpleaños:{{ p.cumple }}
+                    </li>
+                </ol>
+            </li>
+         {% empty %}
+             <p>No hay trabajadores disponibles.</p>
+         {% endfor %}
+    </ol>
+
+{% endblock %}

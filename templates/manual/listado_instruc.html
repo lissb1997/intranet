@@ -1,0 +1,15 @@
+{% extends 'manual/principal_manual.html' %}
+{% block resultado %}
+
+    <p>{{ consulta }}</p>
+    <table>
+        {% for p in instruc %}
+            <tr> {{ p.tipo }} -- {{ p.doc }} -- {{ p.anno }} -- {{ p.num }} -- {{ p.descrip }} -- {{ p.anexo }} --
+                {{ p.archivo }} -- {{ p.tema }}
+            </tr>
+        {% empty %}
+            <p class="respuesta">No hay instrucciones disponibles.</p>
+        {% endfor %}
+    </table>
+
+{% endblock %}

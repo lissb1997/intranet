@@ -1,0 +1,40 @@
+{% extends "manual/indexm.html" %}
+{% block contenido %}
+<div class="home">
+    <div class="home_background_container prlx_parent">
+        <div class="home_background prlx" style="background-image:url(../../static/courses_background.jpg)"></div>
+    </div>
+    <div class="home_content">
+        <h1>Biblioteca</h1>
+    </div>
+</div>
+
+</div>
+<!-- Search -->
+<div class="search_section d-flex flex-column align-items-center justify-content-center">
+    <div class="search_content text-center">
+        <h1 class="search_title">Buscar en la Biblioteca</h1>
+        <div class="buttons_container">
+            <div class="button button_line_1 text-center trans_200"><a href="{% url 'manual:list_bib' %}">Todo</a></div>
+            <div class="button button_line_1 text-center trans_200"><a
+                    href="{% url 'manual:list_circ' %}">Circulares</a></div>
+            <div class="button button_line_1 text-center trans_200"><a
+                    href="{% url 'manual:list_intruc' %}">Instrucciones</a></div>
+            <div class="button button_line_1 text-center trans_200"><a
+                    href="{% url 'manual:procedimientos' %}">Procedimientos</a></div>
+        </div>
+        <form action="resp_busqueda">
+            <div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+                <input class="newsletter_email" placeholder="Nombre del archivo, grupo, Subgrupo..." required="required" data-error="Se requiere al menos una palabra.">
+                <button type="submit" class="newsletter_submit_btn trans_300" value="Submit">Buscar</button>
+            </div>
+        </form>
+        <div class="buttons_container">
+            <div class="button button_line_1 text-center trans_200"><a href="../admin/">Otras Opciones</a></div>
+        </div>
+    </div>
+    <div>
+        {% block resultado %} {% endblock %}
+    </div>
+</div>
+{% endblock %}

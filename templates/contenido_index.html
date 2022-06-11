@@ -1,0 +1,306 @@
+{% load static l10n %}
+
+<!-- Hero Slider -->
+<div>
+  <div class="hero_slider_container">
+    <div class="hero_slider owl-carousel">
+      <!-- Hero Slide -->
+      <div class="hero_slide">
+        <div
+          class="hero_slide_background"
+          style="background-image: url(../static/slider_background.jpg)"
+        ></div>
+        <div
+          class="
+            hero_slide_container
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-center
+          "
+        >
+          <div class="hero_slide_content text-center">
+            <h1
+              data-animation-in="fadeInUp"
+              data-animation-out="animate-out fadeOut"
+            >
+              <span>Intranet</span>
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Slide -->
+      <div class="hero_slide">
+        <div
+          class="hero_slide_background"
+          style="background-image: url(../static/slider_background.jpg)"
+        ></div>
+        <div
+          class="
+            hero_slide_container
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-center
+          "
+        >
+          <div class="hero_slide_content text-center">
+            <h1
+              data-animation-in="fadeInUp"
+              data-animation-out="animate-out fadeOut"
+            >
+              <span>Intranet</span>
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Slide -->
+      <div class="hero_slide">
+        <div
+          class="hero_slide_background"
+          style="background-image: url(../static/slider_background.jpg)"
+        ></div>
+        <div
+          class="
+            hero_slide_container
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-center
+          "
+        >
+          <div class="hero_slide_content text-center">
+            <h1
+              data-animation-in="fadeInUp"
+              data-animation-out="animate-out fadeOut"
+            >
+              <span>Intranet</span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero_slider_left hero_slider_nav trans_200">
+      <span class="trans_200"><</span>
+    </div>
+    <div class="hero_slider_right hero_slider_nav trans_200">
+      <span class="trans_200">></span>
+    </div>
+  </div>
+
+  <div class="hero_boxes">
+    <div class="hero_boxes_inner">
+      <div class="container">
+        <div class="row">
+          <a href="{% url 'manual:principal_manual' %}">
+            <div class="card-1 col-lg-4 hero_box_col">
+              <div
+                class="
+                  hero_box
+                  d-flex
+                  flex-row
+                  align-items-center
+                  justify-content-start
+                "
+              >
+                <img src="{% static 'libros.svg' %}" class="svg" alt="" />
+                <div class="hero_box_content">
+                  <h2 class="hero_box_title">Biblioteca</h2>
+                  <a
+                    href="{% url 'manual:principal_manual' %}"
+                    class="hero_box_link"
+                    >ver mas</a
+                  >
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="{% url 'directorio:principal_directorio' %}">
+            <div class="col-lg-4 hero_box_col">
+              <div
+                class="
+                  hero_box
+                  d-flex
+                  flex-row
+                  align-items-center
+                  justify-content-start
+                "
+              >
+                <img src="{% static 'contacto.svg' %}" class="svg" alt="" />
+                <div class="hero_box_content">
+                  <h2 class="hero_box_title">Directorio</h2>
+                  <a
+                    href="{% url 'directorio:principal_directorio' %}"
+                    class="hero_box_link"
+                    >ver mas</a
+                  >
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="{% url 'asistencia:principal_asistencia' %}">
+            <div class="col-lg-4 hero_box_col">
+              <div
+                class="
+                  hero_box
+                  d-flex
+                  flex-row
+                  align-items-center
+                  justify-content-start
+                "
+              >
+                <img src="{% static 'lista.svg' %}" class="svg" alt="" />
+                <div class="hero_box_content">
+                  <h2 class="hero_box_title">Asistencia</h2>
+                  <a
+                    href="{% url 'asistencia:principal_asistencia' %}"
+                    class="hero_box_link"
+                    >ver mas</a
+                  >
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Services -->
+
+  <div class="services page_section">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="section_title text-center">
+            <h1>Servicios</h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="row services_row">
+        <div
+          class="
+            col-lg-4
+            service_item
+            text-left
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-start
+          "
+        >
+          <div class="icon_container d-flex flex-column justify-content-center">
+            <img src="{% static 'noticias.svg' %}" alt="" />
+          </div>
+          <a href="http://www.cubadebate.cu"><h3>Cubadebate</h3></a>
+          <p>Plataforma digital cubana de contenido noticioso.</p>
+        </div>
+
+        <div
+          class="
+            col-lg-4
+            service_item
+            text-left
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-start
+          "
+        >
+          <div class="icon_container d-flex flex-column justify-content-center">
+            <img src="{% static 'sombrilla.svg' %}" alt="" />
+          </div>
+          <a href="http://www.insmet.cu/"><h3>Instituto de Meteorologia</h3></a>
+          <p>
+            Página web oficial del instituto de meteorología. Puede consultar el
+            clima y las noticias asociadas a él.
+          </p>
+        </div>
+
+        <div
+          class="
+            col-lg-4
+            service_item
+            text-left
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-start
+          "
+        >
+          <div class="icon_container d-flex flex-column justify-content-center">
+            <img src="{% static 'manos.svg' %}" alt="" />
+          </div>
+          <a href="https://www.mintur.gob.cu/"
+            ><h3>Ministerio del turismo</h3></a
+          >
+          <p>Página web oficial del Ministerio de turismo</p>
+        </div>
+
+        <div
+          class="
+            col-lg-4
+            service_item
+            text-left
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-start
+          "
+        >
+          <div class="icon_container d-flex flex-column justify-content-center">
+            <img src="{% static 'justicia.svg' %}" alt="" />
+          </div>
+          <a href="https://www.minjus.gob.cu/es"
+            ><h3>Ministerio de justicia</h3></a
+          >
+          <p>
+            Página web oficial del ministerio de justicia. Puede realizar
+            consultas y operaciones.
+          </p>
+        </div>
+
+        <div
+          class="
+            col-lg-4
+            service_item
+            text-left
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-start
+          "
+        >
+          <div class="icon_container d-flex flex-column justify-content-center">
+            <img src="{% static 'manos.svg' %}" alt="" />
+          </div>
+          <a href="https://www.presidencia.gob.cu/es/"
+            ><h3>Gobierno de Cuba</h3></a
+          >
+          <p>Página web oficial de la Presidencia de Cuba.</p>
+        </div>
+
+        <div
+          class="
+            col-lg-4
+            service_item
+            text-left
+            d-flex
+            flex-column
+            align-items-center
+            justify-content-start
+          "
+        >
+          <div class="icon_container d-flex flex-column justify-content-center">
+            <img src="{% static 'telefono.svg' %}" alt="" />
+          </div>
+          <a href="https://www.apklis.cu/"><h3>Apklis</h3></a>
+          <p>Tienda cubana de aplicaciones móviles.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
