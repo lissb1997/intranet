@@ -28,7 +28,7 @@
                             <img src="{% static 'libros.svg' %}" class="svg" alt="">
                             <div class="hero_box_content">
                                 <h2 class="hero_box_title">Registrar Asistencia</h2>
-                                <a href="{% url 'asistencia:crear_asistencia' %}" class="hero_box_link">ir</a>
+                                <a href="{% url 'asistencia:create' %}" class="hero_box_link">ir</a>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                             <img src="{% static 'contacto.svg' %}" class="svg" alt="">
                             <div class="hero_box_content">
                                 <h2 class="hero_box_title">Mis Asistencias</h2>
-                                <a href="{% url 'asistencia:listado_propio' %}" class="hero_box_link">ver</a>
+                                <a href="{% url 'asistencia:list' %}" class="hero_box_link">ver</a>
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                             <div class="hero_box_content">
                                 <h2 class="hero_box_title">Administrar</h2>
                                 <a href="{% url 'asistencia:autorizar' %}" class="hero_box_link">Autorizos</a><br>
-                                <a href="{% url 'asistencia:listado_asistencia' %}" class="hero_box_link">Listados</a>
+                                <a href="{% url 'asistencia:list' %}" class="hero_box_link">Listados</a>
                             </div>
                         </div>
                     </div>
@@ -58,4 +58,7 @@
         </div>
     </div>
     <br>
+    <div>
+        {% block resultado %} {% endblock %}
+    </div>
 {% endblock %}
