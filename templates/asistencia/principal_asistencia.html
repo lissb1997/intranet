@@ -1,28 +1,27 @@
 {% extends "index.html" %}
 {% load static %}
 {% block contenido %}
-    <div class="hero_slider_container">
+<div class="hero_slider_container">
+    <!-- Hero Slide -->
+    <div class="hero_slider owl-carousel">
         <!-- Hero Slide -->
-        <div class="hero_slider owl-carousel">
-            <!-- Hero Slide -->
-            <div class="hero_slide">
-                <div class="hero_slide_background"
-                     style="background-image:url(../../static/slider_background.jpg)"></div>
-                <div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
-                    <div class="hero_slide_content text-center">
-                        <h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">
-                            <span>Asistencia</span></h1>
-                    </div>
+        <div class="hero_slide">
+            <div class="hero_slide_background" style="background-image:url(../../static/slider_background.jpg)"></div>
+            <div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
+                <div class="hero_slide_content text-center">
+                    <h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">
+                        <span>Asistencia</span>
+                    </h1>
                 </div>
             </div>
         </div>
     </div>
-    <br>
-    <div class="hero_boxes">
-        <div class="hero_boxes_inner">
-            <div class="container">
-                <div class="row">
-
+</div>
+<div class="hero_boxes">
+    <div class="hero_boxes_inner">
+        <div class="container">
+            <div class="row">
+                <a href="{% url 'asistencia:create' %}">
                     <div class="col-lg-4 hero_box_col">
                         <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                             <img src="{% static 'libros.svg' %}" class="svg" alt="">
@@ -32,7 +31,9 @@
                             </div>
                         </div>
                     </div>
+                </a>
 
+                <a href="{% url 'asistencia:list' %}">
                     <div class="col-lg-4 hero_box_col">
                         <div class="hero_box d-flex flex-row align-items-center justify-content-start">
                             <img src="{% static 'contacto.svg' %}" class="svg" alt="">
@@ -42,23 +43,28 @@
                             </div>
                         </div>
                     </div>
+                </a>
 
-                    <div class="col-lg-4 hero_box_col">
-                        <div class="hero_box d-flex flex-row align-items-center justify-content-start">
-                            <img src="{% static 'lista.svg' %}" class="svg" alt="">
-                            <div class="hero_box_content">
-                                <h2 class="hero_box_title">Administrar</h2>
-                                <a href="{% url 'asistencia:autorizar' %}" class="hero_box_link">Autorizos</a><br>
-                                <a href="{% url 'asistencia:list' %}" class="hero_box_link">Listados</a>
-                            </div>
+                <div class="col-lg-4 hero_box_col">
+                    <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                        <img src="{% static 'lista.svg' %}" class="svg" alt="">
+                        <div class="hero_box_content">
+                            <h2 class="hero_box_title">Administrar</h2>
+                            <a href="{% url 'asistencia:autorizar' %}" class="hero_box_link">Autorizos</a><br>
+                            <a href="{% url 'asistencia:list' %}" class="hero_box_link">Listados</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <br>
-    <div>
-        {% block resultado %} {% endblock %}
+</div>
+<div class="popular page_section">
+    <div class="container">
+        <div class="row">
+            {% block resultado %} {% endblock %}
+        </div>
     </div>
+</div>
+
 {% endblock %}

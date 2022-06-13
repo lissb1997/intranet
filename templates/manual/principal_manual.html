@@ -2,7 +2,7 @@
 {% block contenido %}
 <div class="home">
     <div class="home_background_container prlx_parent">
-        <div class="home_background prlx" style="background-image:url(../../static/courses_background.jpg)"></div>
+        <div class="home_background prlx" style="background-image:url(../../static/biblioteca.jpeg)"></div>
     </div>
     <div class="home_content">
         <h1>Biblioteca</h1>
@@ -11,10 +11,16 @@
 
 </div>
 <!-- Search -->
-<div class="search_section d-flex flex-column align-items-center justify-content-center">
-    <div class="search_content text-center">
-        <h1 class="search_title">Buscar en la Biblioteca</h1>
-        <div class="buttons_container">
+<div class="popular page_section">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title text-center">
+                    <h1>Buscar en la Biblioteca</h1>
+                </div>
+            </div>
+        </div>
+        <div class="buttons_container justify-content-center">
             <div class="button button_line_1 text-center trans_200"><a href="{% url 'manual:list_bib' %}">Todo</a></div>
             <div class="button button_line_1 text-center trans_200"><a
                     href="{% url 'manual:list_circ' %}">Circulares</a></div>
@@ -29,12 +35,15 @@
                 <button type="submit" class="newsletter_submit_btn trans_300" value="Submit">Buscar</button>
             </div>
         </form>
-        <div class="buttons_container">
+        <div class="buttons_container justify-content-center">
             <div class="button button_line_1 text-center trans_200"><a href="../admin/">Otras Opciones</a></div>
         </div>
     </div>
-    <div>
-        {% block resultado %} {% endblock %}
+
+    <div class="resultado">
+        <div class="container">
+            {% block resultado %} {% endblock %}
+        </div>
     </div>
 </div>
 {% endblock %}

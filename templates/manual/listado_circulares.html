@@ -1,14 +1,28 @@
 {% extends 'manual/principal_manual.html' %}
 {% block resultado %}
-
-    <p>{{ consulta }}</p>
-    <ul>
-        {% for p in circulares %}
-            <li> {{ p.anno }} -- {{ p.numero }} -- {{ p.organismo }} -- {{ p.nombre }} -- {{ p.archivo }}
-            </li>
-        {% empty %}
-            <p class="respuesta">No hay circulares disponibles.</p>
-        {% endfor %}
-    </ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Titulo</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Año</th>
+            <th scope="col">Número</th>
+            <th scope="col">Organismo Emisor</th>
+            <th scope="col">Archivo</th>
+        </tr>
+    </thead>
+    {% for a in circular %}
+    <tr>
+        <th scope="row">{{ a.titulo }}</th>
+        <td>{{ a.descrip }}</td>
+        <td>{{ a.anno }}</td>
+        <td>{{ a.numero }}</td>
+        <td>{{ a.organismo }}</td>
+        <td>{{ a.archivo }}</td>
+    </tr>
+    {% empty %}
+    <p class="respuesta">No hay elementos disponibles.</p>
+    {% endfor %}
+</table>
 
 {% endblock %}

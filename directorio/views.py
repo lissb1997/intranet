@@ -14,13 +14,16 @@ def listado_personal(request):
     # creando el contexto
     contexto = {'personal': Persona.objects.all()}
     # devolviendo el contexto
-    return render(request, 'directorio/listado_personal.html', contexto)  # hacer html
+    # hacer html
+    return render(request, 'directorio/listado_personal.html', contexto)
+
 
 def listado_CE(request):
     # creando el contexto
-    contexto = {'personal': Centro_Externo.objects.all()}
+    contexto = {'centro_ext': Centro_Externo.objects.all()}
     # devolviendo el contexto
     return render(request, 'directorio/listado_CE.html', contexto)
+
 
 def buscar(request):
     contexto = {}
@@ -31,5 +34,6 @@ def buscar(request):
             contexto['otro'] = OtrosEspacios.objects.filter(request)
             return render('directorio/resp_busqueda', contexto)
         else:
-            print('Los valores proporcionados no se corresponden con los criterios de búsqueda')
+            print(
+                'Los valores proporcionados no se corresponden con los criterios de búsqueda')
         return render('directorio/resp_busqueda', contexto)

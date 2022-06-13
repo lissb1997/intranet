@@ -1,15 +1,31 @@
 {% extends 'manual/principal_manual.html' %}
 {% block resultado %}
-
-    <p>{{ consulta }}</p>
-    <table>
-        {% for p in instruc %}
-            <tr> {{ p.tipo }} -- {{ p.doc }} -- {{ p.anno }} -- {{ p.num }} -- {{ p.descrip }} -- {{ p.anexo }} --
-                {{ p.archivo }} -- {{ p.tema }}
-            </tr>
-        {% empty %}
-            <p class="respuesta">No hay instrucciones disponibles.</p>
-        {% endfor %}
-    </table>
-
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Titulo</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Año</th>
+            <th scope="col">Número</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Anexo</th>
+            <th scope="col">Tema</th>
+            <th scope="col">Archivo</th>
+        </tr>
+    </thead>
+    {% for a in instruc %}
+    <tr>
+        <th scope="row">{{ a.titulo }}</th>
+        <td>{{ a.descrip }}</td>
+        <td>{{ a.anno }}</td>
+        <td>{{ a.numero }}</td>
+        <td>{{ a.tipo }}</td>
+        <td>{{ a.anexo }}</td>
+        <td>{{ a.tema }}</td>
+        <td>{{ a.archivo }}</td>
+    </tr>
+    {% empty %}
+    <p class="respuesta">No hay elementos disponibles.</p>
+    {% endfor %}
+</table>
 {% endblock %}

@@ -1,12 +1,21 @@
 {% extends 'manual/principal_manual.html' %}
 {% block resultado %}
-    <p>{{ consulta }}</p>
-    <ul>
-        {% for p in biblioteca %}
-            <li> {{ p.nombre }} -- {{ p.categoría }} -- {{ p.zip }}
-            </li>
-        {% empty %}
-            <p class="respuesta">No hay elementos disponibles.</p>
-        {% endfor %}
-    </ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">Archivo</th>
+        </tr>
+    </thead>
+    {% for a in biblioteca %}
+    <tr>
+        <th scope="row">{{ a.nombre }}</th>
+        <td>{{ a.categoria }}</td>
+        <td>{{ a.archivo }}</td>
+    </tr>
+    {% empty %}
+    <p class="respuesta">No hay elementos disponibles.</p>
+    {% endfor %}
+</table>
 {% endblock %}

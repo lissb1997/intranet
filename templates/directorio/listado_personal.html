@@ -1,6 +1,37 @@
 {% extends 'directorio/principal_directorio.html'%}
 {% block resultado %}
-    <p>{{ consulta }}</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Area</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Extención de Teléfono</th>
+            <th scope="col">Teléfono Directo</th>
+            <th scope="col">Cumpleaños</th>
+        </tr>
+    </thead>
+    {% for a in personal %}
+    <tr>
+        <th scope="row">{{ a.nombre }}</th>
+        <td>{{ a.apellidos }}</td>
+        <td>{{ a.usuario }}</td>
+        <td>{{ a.correo }}</td>
+        <td>{{ a.area }}</td>
+        <td>{{ a.cargo }}</td>
+        <td>{{ a.ext_telef }}</td>
+        <td>{{ a.telef_dir }}</td>
+        <td>{{ a.cumple }}</td>
+    </tr>
+    {% empty %}
+    <p class="respuesta">No hay elementos disponibles.</p>
+    {% endfor %}
+</table>
+
+<!-- <p>{{ consulta }}</p>
     <ol id="lista">
          {% for p in personal %}
             <li>Nombre: {{ p.nombre }} {{ p.apellidos }} 
@@ -14,6 +45,6 @@
          {% empty %}
              <p>No hay trabajadores disponibles.</p>
          {% endfor %}
-    </ol>
+    </ol> -->
 
 {% endblock %}

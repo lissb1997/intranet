@@ -24,17 +24,17 @@ class Documento(models.Model):
 class Biblioteca(models.Model):
     """Destinado a documentos importantes que se desean agregar al repositorio de documentos"""
     SHIRT_AREA = (
-        ('S', 'Sistemas'),
-        ('T', 'Tesorería'),
-        ('C', 'Crédito'),
-        ('D', 'Dirección General'),
-        ('E', 'Economía'),
-        ('N', 'Negocio'),
-        ('A', 'Aseguramiento'),
+        ('Sistemas', 'Sistemas'),
+        ('Tesorería', 'Tesorería'),
+        ('Crédito', 'Crédito'),
+        ('Direción General', 'Dirección General'),
+        ('Economía', 'Economía'),
+        ('Negocio', 'Negocio'),
+        ('Aseguramiento', 'Aseguramiento'),
     )
     objects = models.Manager()
     nombre = models.CharField('Nombre', max_length=50)
-    categoria = models.CharField('Categoría', max_length=5, help_text='Seleccione a que área pertenece el documento',
+    categoria = models.CharField('Categoría', max_length=200, help_text='Seleccione a que área pertenece el documento',
                                  choices=SHIRT_AREA)
     archivo = models.FileField('Comprimido', upload_to='biblioteca/', max_length=50,
                            help_text='Dirección del comprimido', blank=True, null=True)
@@ -53,16 +53,16 @@ class Instruc(Documento):
     """
     objects = models.Manager()
     SHIRT_TEMA = (
-        ('C', 'Crédito'),
-        ('E', 'Economía'),
-        ('T', 'Tesorería'),
+        ('Crédito', 'Crédito'),
+        ('Economía', 'Economía'),
+        ('Tesorerí', 'Tesorería'),
     )
     tipo = models.CharField('Tipo de Instrucción',
                             max_length=50, help_text="Tipo de Intrucción")
 
     anexo = models.CharField('Anexo', max_length=50,
                              help_text='Defina el nombre de los anexos')
-    tema = models.CharField('Tema', max_length=20, help_text='Defina a que área esta asociado este Tema',
+    tema = models.CharField('Tema', max_length=200, help_text='Defina a que área esta asociado este Tema',
                             choices=SHIRT_TEMA)
 
     class Meta:
@@ -87,7 +87,7 @@ class Procedimiento(Documento):
     )
     seccion = models.IntegerField(
         'Sección', help_text='Defina la sección a la que pertenece', choices=SHIRT_SECCION)
-    grupo = models.CharField('Grupo', max_length=50,
+    grupo = models.CharField('Grupo', max_length=200,
                              help_text='Defina al grupo al que pertenece')
     subGrupo = models.CharField(
         'Subgrupo', max_length=50, help_text='Defina el subgrupo al que pertenece')

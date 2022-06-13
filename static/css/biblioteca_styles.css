@@ -753,6 +753,7 @@ section
 .buttons_container
 {
 	margin-top: 50px;
+	align-items: center;
 }
 
 .button_line_1

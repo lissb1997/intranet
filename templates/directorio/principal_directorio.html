@@ -1,38 +1,48 @@
 {% extends "directorio/indexd.html" %}
 {% load static %}
 {% block contenido %}
-   <div class="home">
-        <div class="home_background_container prlx_parent">
-            <div class="home_background prlx"
-                 style="background-image:url(../../static/courses_background.jpg)"></div>
-        </div>
-        <div class="home_content">
-            <h1>Directorio</h1>
-        </div>
+<div class="home">
+    <div class="home_background_container prlx_parent">
+        <div class="home_background prlx" style="background-image:url(../../static/courses_background.jpg)"></div>
     </div>
+    <div class="home_content">
+        <h1>Directorio</h1>
+    </div>
+</div>
 
-    </div>
-    <!-- Search -->
-    <div class="search_section d-flex flex-column align-items-center justify-content-center">
-        <div class="search_content text-center">
-            <h1 class="search_title">Buscar en el Directorio</h1>
-            <div class="buttons_container">
-                <div class="button button_line_1 text-center trans_200"><a href="{% url 'directorio:lista_persona' %}">Personal de FINTUR</a></div>
-                <div class="button button_line_1 text-center trans_200"><a
-                        href="{% url 'directorio:lista_ce' %}">Centros Externos</a></div>
-            </div>
-            <form action="resp_busqueda">
-                <div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
-                    <input class="newsletter_email" placeholder="Nombre, apellido, direccion, cargo..." required="required" data-error="Se requiere al menos una palabra.">
-                    <button type="submit" class="newsletter_submit_btn trans_300" value="Submit">Buscar</button>
+</div>
+<!-- Search -->
+<div class="popular page_section">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title text-center">
+                    <h1>Buscar en la Biblioteca</h1>
                 </div>
-            </form>
-            <div class="buttons_container">
-                <div class="button button_line_1 text-center trans_200"><a href="../admin/">Otras Opciones</a></div>
             </div>
         </div>
-        <div>
+        <div class="buttons_container">
+            <div class="button button_line_1 text-center trans_200"><a
+                    href="{% url 'directorio:lista_persona' %}">Personal de FINTUR</a></div>
+            <div class="button button_line_1 text-center trans_200"><a href="{% url 'directorio:lista_ce' %}">Centros
+                    Externos</a></div>
+        </div>
+        <form action="resp_busqueda">
+            <div
+                class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+                <input class="newsletter_email" placeholder="Nombre, apellido, direccion, cargo..." required="required"
+                    data-error="Se requiere al menos una palabra.">
+                <button type="submit" class="newsletter_submit_btn trans_300" value="Submit">Buscar</button>
+            </div>
+        </form>
+        <div class="buttons_container">
+            <div class="button button_line_1 text-center trans_200"><a href="../admin/">Otras Opciones</a></div>
+        </div>
+    </div>
+    <div class="resultado">
+        <div class="container">
             {% block resultado %} {% endblock %}
         </div>
     </div>
+</div>
 {% endblock %}

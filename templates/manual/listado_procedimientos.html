@@ -1,14 +1,36 @@
 {% extends 'manual/principal_manual.html'%}
 {% block resultado %}
-<p>{{ consulta }}</p>
-<ul>
-    {% for p in procedimientos %}
-    <li> {{ p.seccion }} -- {{ p.grupo }} -- {{ p.subgrupo }} -- {{ p.titulo }} -- {{ p.proforma }} -- {{ p.descrip }}
-        -- {{ p.archivo }}
-    </li>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Titulo</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Año</th>
+            <th scope="col">Número</th>
+            <th scope="col">Sección</th>
+            <th scope="col">Grupo</th>
+            <th scope="col">SubGrupo</th>
+            <th scope="col">Anexos</th>
+            <th scope="col">Proforma</th>
+            <th scope="col">Archivo</th>
+        </tr>
+    </thead>
+    {% for a in instruc %}
+    <tr>
+        <th scope="row">{{ a.titulo }}</th>
+        <td>{{ a.descrip }}</td>
+        <td>{{ a.anno }}</td>
+        <td>{{ a.numero }}</td>
+        <td>{{ a.seccion}}</td>
+        <td>{{ a.grupo }}</td>
+        <td>{{ a.subGrupo }}</td>
+        <td>{{ a.anexo }}</td>
+        <td>{{ a.proforma }}</td>
+        <td>{{ a.archivo }}</td>
+    </tr>
     {% empty %}
-    <p>No hay procedimientos disponibles.</p>
+    <p class="respuesta">No hay elementos disponibles.</p>
     {% endfor %}
-</ul>
+</table>
 
 {% endblock %}

@@ -1,14 +1,32 @@
-{% extends 'index.html'%}
-{% block contenido %}
-<p>{{ consulta }}</p>
-<ul>
-    {% for p in centro_ext %}
-    <li> {{ p.nombreEntidad }} -- {{ p.direccion }} -- {{ p.encargado }} -- {{ p.area }} -- {{ p.categoria }} -- {{
-        p.supervisor }} -- {{ p.telefono }}
-    </li>
+{% extends 'directorio/principal_directorio.html'%}
+{% block resultado %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Encargado</th>
+            <th scope="col">Supervisor</th>
+            <th scope="col">Area</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">Encargado</th>
+            <th scope="col">Teléfono</th>
+        </tr>
+    </thead>
+    {% for a in centro_ext %}
+    <tr>
+        <th scope="row">{{ a.nombreEntidad }}</th>
+        <td>{{ a.direccion }}</td>
+        <td>{{ a.encargado }}</td>
+        <td>{{ a.supervisor }}</td>
+        <td>{{ a.area }}</td>
+        <td>{{ a.categoria }}</td>
+        <td>{{ a.supervisor }}</td>
+        <td>{{ a.telefono }}</td>
+    </tr>
     {% empty %}
-    <p>No hay elementos disponibles.</p>
+    <p class="respuesta">No hay elementos disponibles.</p>
     {% endfor %}
-</ul>
+</table>
 
 {% endblock %}
