@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-
+from .filters import InstrucFilter
 from .models import Biblioteca, Circular, Instruc, Procedimiento
 
 # from django.db.models import F, Q, Count, len
@@ -8,6 +8,8 @@ from .models import Biblioteca, Circular, Instruc, Procedimiento
 
 # Create your views here.
 ##################### Principal ##############################################
+
+
 def principal(request):
     return render(request, 'manual/principal_manual.html')
 
@@ -21,6 +23,8 @@ def listado_procedimiento(request):
     return render(request, 'manual/listado_procedimientos.html', contexto)
 
 ##################### Circulares ######################################
+
+
 def listado_circulares(request):
     # crando el contexto
     contexto = {}
@@ -29,20 +33,27 @@ def listado_circulares(request):
     return render(request, 'manual/listado_circulares.html', contexto)
 
 ######################### Instrucciones ###########################
+
+
 def listado_instrucciones(request):
     # crando el contexto
     contexto = {}
-    contexto['instruc'] = Instruc.objects.all()
+    # contexto['instruc'] = Instruc.objects.all()
+    contexto['filter'] = InstrucFilter(
+        request.GET, queryset=Instruc.objects.all())
     # devolviendo el contexto
     return render(request, 'manual/listado_instruc.html', contexto)
 
 ############################### Biblioteca###################
+
+
 def listado_bib(request):
     # crando el contexto
     contexto = {}
     contexto['biblioteca'] = Biblioteca.objects.all()
     # devolviendo el contexto
     return render(request, 'manual/listado_biblioteca.html', contexto)
+
 
 def buscar(request):
     contexto = {}
@@ -54,5 +65,6 @@ def buscar(request):
             contexto['proced'] = Procedimiento.objects.filter(request)
             return render('resp_busqueda', contexto)
         else:
-            print('Los valores proporcionados no se corresponden con los criterios de búsqueda')
+            print(
+                'Los valores proporcionados no se corresponden con los criterios de búsqueda')
         return render('resp_busqueda', contexto)
