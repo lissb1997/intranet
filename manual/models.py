@@ -55,7 +55,7 @@ class Instruc(Documento):
     SHIRT_TEMA = (
         ('Crédito', 'Crédito'),
         ('Economía', 'Economía'),
-        ('Tesorerí', 'Tesorería'),
+        ('Tesorería', 'Tesorería'),
     )
     tipo = models.CharField('Tipo de Instrucción',
                             max_length=50, help_text="Tipo de Intrucción")

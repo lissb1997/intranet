@@ -1,5 +1,9 @@
 {% extends 'manual/principal_manual.html' %}
 {% block resultado %}
+<form mehotd="get">
+    {{ filter.form.as_p }}
+    <input type='submit' value='Buscar' />
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -13,7 +17,7 @@
             <th scope="col">Archivo</th>
         </tr>
     </thead>
-    {% for a in instruc %}
+    {% for a in filter.qs %}
     <tr>
         <th scope="row">{{ a.titulo }}</th>
         <td>{{ a.descrip }}</td>
