@@ -755,6 +755,31 @@ section
 	margin-top: 50px;
 	align-items: center;
 }
+.button_color_1
+{
+	background: #009cde;
+}
+.button_color_3
+{
+	background: #dfe1e2;
+}
+.button_color_1 a
+{
+	color: #FFFFFF;
+}
+.button_color_2
+{
+	background: #1a1a1a;
+}
+.button_color_2 a
+{
+	color: #FFFFFF;
+}
+.button_line_1
+{
+	background: transparent;
+	border: solid 2px #ffb606;
+}
 
 .button_line_1
 {
@@ -921,7 +946,7 @@ section
 	font-size: 14px;
 	font-weight: 500;
 	cursor: pointer;
-	margin-top: 30px;
+	margin-top: 10px;
 }
 .newsletter_submit_btn:focus
 {
@@ -1075,6 +1100,10 @@ input:last-of-type {
     margin-bottom: 0px;
 	margin-top: 30px;
 	width: 400px;
+}
+.input_field button{
+	margin-top: 10px;
+	width: 100px;
 }
 
 .input_field:focus {

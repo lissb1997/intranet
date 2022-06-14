@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .filters import InstrucFilter
+from .filters import BibliotecaFilter, InstrucFilter, ProcedimientoFilter
 from .models import Biblioteca, Circular, Instruc, Procedimiento
 
 # from django.db.models import F, Q, Count, len
@@ -18,7 +18,8 @@ def principal(request):
 def listado_procedimiento(request):
     # crando el contexto
     contexto = {}
-    contexto['procedimientos'] = Procedimiento.objects.all()
+    contexto['filter'] = ProcedimientoFilter(
+        request.GET, queryset=Procedimiento.objects.all())
     # devolviendo el contexto
     return render(request, 'manual/listado_procedimientos.html', contexto)
 
@@ -28,7 +29,8 @@ def listado_procedimiento(request):
 def listado_circulares(request):
     # crando el contexto
     contexto = {}
-    contexto['circulares'] = Circular.objects.all()
+    contexto['filter'] = ProcedimientoFilter(
+        request.GET, queryset=Circular.objects.all())
     # devolviendo el contexto
     return render(request, 'manual/listado_circulares.html', contexto)
 
@@ -50,7 +52,8 @@ def listado_instrucciones(request):
 def listado_bib(request):
     # crando el contexto
     contexto = {}
-    contexto['biblioteca'] = Biblioteca.objects.all()
+    contexto['filter'] = BibliotecaFilter(
+        request.GET, queryset=Biblioteca.objects.all())
     # devolviendo el contexto
     return render(request, 'manual/listado_biblioteca.html', contexto)
 
@@ -59,12 +62,16 @@ def buscar(request):
     contexto = {}
     if request.GET.get('submit'):
         if request:
-            contexto['biblioteca'] = Biblioteca.objects.filter(request)
-            contexto['instruc'] = Instruc.objects.filter(request)
-            contexto['circular'] = Circular.objects.filter(request)
-            contexto['proced'] = Procedimiento.objects.filter(request)
-            return render('resp_busqueda', contexto)
+            contexto['filter'] = BibliotecaFilter(
+                request.GET, queryset=Biblioteca.objects.all())
+            contexto['filter'] = InstrucFilter(
+        request.GET, queryset=Instruc.objects.all())
+            contexto['filter'] = ProcedimientoFilter(
+        request.GET, queryset=Circular.objects.all())
+            contexto['filter']=ProcedimientoFilter(
+        request.GET, queryset = Circular.objects.all())
+            return render('manual/resp_busqueda.html', contexto)
         else:
             print(
                 'Los valores proporcionados no se corresponden con los criterios de búsqueda')
-        return render('resp_busqueda', contexto)
+        return render('manual/resp_busqueda.html', contexto)
