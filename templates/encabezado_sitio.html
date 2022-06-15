@@ -4,10 +4,10 @@
   <!-- Logo -->
   <div class="logo_container">
     <div class="logo">
-            <img src="../static/logo.png" alt="" width="60px">
-            <span>FINTUR</span>
-        </div>
+      <img src="../static/logo.png" alt="" width="60px">
+      <span>FINTUR</span>
     </div>
+  </div>
 
   <!-- Main Navigation -->
   <nav class="main_nav_container">
@@ -15,26 +15,41 @@
       <ul class="main_nav_list">
         <li class="main_nav_item"><a href="{% url 'inicio' %}">Inicio</a></li>
         <li class="main_nav_item"><a href="{% url 'inicio' %}">FINTUR</a></li>
-                <li class="main_nav_item"><a href="{% url 'asistencia:list'%}">Asistencia</a></li>
-                <li class="main_nav_item"><a href="{% url 'directorio:principal_directorio'%}">Directorio</a></li>
-                <li class="main_nav_item"><a href="{% url 'manual:principal_manual' %}">Biblioteca</a></li>
-            </ul>
-        </div>
-    </nav>
+        <li class="main_nav_item"><a href="{% url 'asistencia:list'%}">Asistencia</a></li>
+        <li class="main_nav_item"><a href="{% url 'directorio:principal_directorio'%}">Directorio</a></li>
+        <li class="main_nav_item"><a href="{% url 'manual:principal_manual' %}">Biblioteca</a></li>
+      </ul>
+    </div>
+  </nav>
 </div>
-<div
-  class="header_side d-flex flex-row justify-content-center align-items-center"
->
-   {%if not user.is_authenticated %}
-        <i class="fa fa-user" aria-hidden="true fa-2x"></i>
-        <a href="accounts/login">AUTENTICAR</a>
-    {% else %}
-        <i class="fa fa-user" aria-hidden="true fa-2x"></i>
-        <a href="accounts/logout">CERRAR SESIÓN</a>
+<div class="header_side d-flex flex-row justify-content-center align-items-center">
+  {%if not user.is_authenticated %}
+  <i class="fa fa-user" aria-hidden="true fa-2x"></i>
+  <a href="accounts/login">AUTENTICAR</a>
+  {% else %}
+  <!-- <i class="fa fa-user" aria-hidden="true fa-2x"></i>
+        <a href="accounts/logout">CERRAR SESIÓN</a> -->
+  <li class="nav-item dropdown">
+    <a class="nav-link btn" data-toggle="dropdown" href="#">
+      <i class="far fa-user" aria-hidden="true"></i> Hola, {{ user.username }}</a>
+    </a>
+    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left" id="jazzy-usermenu">
+      <span class="dropdown-header">Cuenta</span>
+      <div class="dropdown-divider"></div>
+      <a href="accounts/password_change/" class="dropdown-item">
+        <i class="fas fa-key mr-2"></i> Cambiar Contraseña
+      </a>
+      <div class="dropdown-divider"></div>
+      <a href="accounts/logout" class="dropdown-item">
+        <i class="fas fa-users mr-2"></i> Cerrar Sesión
+      </a>
 
-  {% endif %} 
-  
-    <!-- <a href="{% url 'admin:login' %}">AUTENTICAR</a> -->
+    </div>
+  </li>
+
+  {% endif %}
+
+  <!-- <a href="{% url 'admin:login' %}">AUTENTICAR</a> -->
 </div>
 
 <!-- Hamburger #no se q es!!!!!!!!-->
