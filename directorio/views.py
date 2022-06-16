@@ -12,7 +12,7 @@ def principal(request):
 # ********************** Personal **********************************
 def listado_personal(request):
     # creando el contexto
-    contexto = {'personal': Persona.objects.all()}
+    contexto = {'personal': Persona.objects.all().order_by('area')}
     # devolviendo el contexto
     # hacer html
     return render(request, 'directorio/listado_personal.html', contexto)

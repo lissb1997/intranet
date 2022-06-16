@@ -20,29 +20,39 @@
                 </div>
             </div>
         </div>
-        <div class="buttons_container justify-content-center text-center">
-            <div class="button button_line_1 text-center trans_200"><a href="{% url 'manual:list_bib' %}">Todo</a></div>
-            <div class="button button_line_1 text-center trans_200"><a
-                    href="{% url 'manual:list_circ' %}">Circulares</a></div>
-            <div class="button button_line_1 text-center trans_200"><a
-                    href="{% url 'manual:list_intruc' %}">Instrucciones</a></div>
-            <div class="button button_line_1 text-center trans_200"><a
-                    href="{% url 'manual:procedimientos' %}">Procedimientos</a></div>
-        </div>
-        <form action="resp_busqueda">
-            <div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center text-center">
-                <input class="newsletter_email" placeholder="Nombre del archivo, grupo, Subgrupo..." required="required" data-error="Se requiere al menos una palabra.">
-                <button type="submit" class="newsletter_submit_btn trans_300" value="Submit">Buscar</button>
+        <div class="resultado text-center">
+            <div class="container">
+                {% block resultado %}
+                <div class="buttons_container justify-content-center text-center">
+                    <div class="button button_line_1 text-center trans_200"><a
+                            href="{% url 'manual:list_bib' %}">Todo</a></div>
+                    <div class="button button_line_1 text-center trans_200"><a
+                            href="{% url 'manual:list_circ' %}">Circulares</a></div>
+                    <div class="button button_line_1 text-center trans_200"><a
+                            href="{% url 'manual:list_intruc' %}">Instrucciones</a></div>
+                    <div class="button button_line_1 text-center trans_200"><a
+                            href="{% url 'manual:procedimientos' %}">Procedimientos</a></div>
+                    <div class="button button_color_1 text-center trans_200"><a href="../admin/">Otras Opciones</a>
+                    </div>
+                </div>
+                <form action="resp_busqueda">
+                    <div
+                        class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center text-center">
+                        <input class="newsletter_email" placeholder="Nombre del archivo, grupo, Subgrupo..."
+                            required="required" data-error="Se requiere al menos una palabra.">
+                        <button type="submit" class="newsletter_submit_btn trans_300" value="Submit">Buscar</button>
+                    </div>
+                </form>
+                <!-- <form mehotd="get">
+                    <div
+                        class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center text-center">
+                        {{ filter.form.as_p }}
+                        <button type="submit" class="newsletter_submit_btn trans_300" value="Buscar">Buscar</button>
+                    </div>
+                </form> -->
             </div>
-        </form>
-        <div class="buttons_container justify-content-center text-center">
-            <div class="button button_line_1 text-center trans_200"><a href="../admin/">Otras Opciones</a></div>
-        </div>
-    </div>
 
-    <div class="resultado text-center">
-        <div class="container">
-            {% block resultado %} {% endblock %}
+            {% endblock %}
         </div>
     </div>
 </div>

@@ -1,5 +1,23 @@
 {% extends 'manual/principal_manual.html' %}
 {% block resultado %}
+<div class="buttons_container justify-content-center text-center">
+    <div class="button button_line_1 text-center trans_200"><a href="{% url 'manual:list_bib' %}">Todo</a></div>
+    <div class="button button_color_1 text-center trans_200"><a
+            href="{% url 'manual:list_circ' %}">Circulares</a></div>
+    <div class="button button_line_1 text-center trans_200"><a
+            href="{% url 'manual:list_intruc' %}">Instrucciones</a></div>
+    <div class="button button_line_1 text-center trans_200"><a
+            href="{% url 'manual:procedimientos' %}">Procedimientos</a></div>
+    <div class="button button_color_3 text-center trans_200"><a href="../admin/">Otras Opciones</a></div>
+</div>
+<form mehotd="get">
+    <div
+        class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center text-center">
+        {{ filter.form.as_p }}
+        <button type="submit" class="newsletter_submit_btn trans_300" value="Buscar">Buscar</button>
+        <!-- <input class="btn btn-primary" type='submit' value='Buscar'> -->
+    </div>
+</form>
 <table class="table">
     <thead>
         <tr>
