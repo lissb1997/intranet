@@ -83,6 +83,64 @@ p
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
+#text{
+	margin-top: 15px;
+
+}
+#id_titulo__icontains 
+{
+size: 20px;
+margin-right: 15px;
+width: 200px;
+margin-top: 0px;
+}
+#id_organismo{
+size: 20px;
+margin-right: 15px;
+width: 200px;
+margin-top: 0px;
+} 
+
+#id_anno{
+size: 20px;
+margin-right: 15px;
+width: 200px;
+margin-top: 0px;
+}
+#id_grupo{
+size: 20px;
+margin-right: 15px;
+width: 200px;
+margin-top: 0px;
+}
+#id_subGrupo{
+size: 20px;
+margin-right: 15px;
+width: 200px;
+margin-top: 0px;
+}
+#id_numero{
+	size: 20px;
+	margin-right: 15px;
+	width: 200px;
+	margin-top: 0px;
+	}
+#id_nombre__icontains{
+	size: 20px;
+	margin-right: 15px;
+	width: 200px;
+	margin-top: 0px;
+	}
+#id_categoria{
+	size: 20px;
+	margin-right: 15px;
+	width: 200px;
+	margin-top: 0px;
+}
+table
+{
+	margin-top: 15px;
+}
 p a
 {
 	display: inline;
@@ -922,6 +980,10 @@ section
 	width: 60%;
 	margin-top: 48px;
 }
+.newsletter_form{
+	margin-top: 30px;
+	align-items: center;
+}
 .newsletter_email
 {
 	width: calc(100% - 164px);
@@ -1123,6 +1185,7 @@ input:last-of-type {
     border: none;
     cursor: pointer;
 }
+
 
 .search_submit_button:hover {
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);

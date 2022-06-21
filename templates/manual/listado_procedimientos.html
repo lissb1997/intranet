@@ -9,7 +9,7 @@
     </div>
 </form> -->
 <div class="buttons_container justify-content-center text-center">
-    <div class="button button_line_1 text-center trans_200"><a href="{% url 'manual:list_bib' %}">Todo</a></div>
+    <div class="button button_line_1 text-center trans_200"><a href="{% url 'manual:list_bib' %}">Otros</a></div>
     <div class="button button_line_1 text-center trans_200"><a
             href="{% url 'manual:list_circ' %}">Circulares</a></div>
     <div class="button button_line_1 text-center trans_200"><a
@@ -22,14 +22,14 @@
     <div
         class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center text-center">
         {{ filter.form.as_p }}
-        <button type="submit" class="newsletter_submit_btn trans_300" value="Buscar">Buscar</button>
+        <button type="submit" class="newsletter_submit_btn trans_300" value="Buscar"><i class="fa fa-search fa-fw" aria-hidden="true"></i></button>
         <!-- <input class="btn btn-primary" type='submit' value='Buscar'> -->
     </div>
 </form>
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Titulo</th>
+            <th scope="col">Título</th>
             <th scope="col">Descripción</th>
             <th scope="col">Año</th>
             <th scope="col">Número</th>
@@ -41,7 +41,7 @@
             <th scope="col">Archivo</th>
         </tr>
     </thead>
-    {% for a in procedimiento %}
+    {% for a in filter.qs %}
     <tr>
         <th scope="row">{{ a.titulo }}</th>
         <td>{{ a.descrip }}</td>
@@ -52,7 +52,7 @@
         <td>{{ a.subGrupo }}</td>
         <td>{{ a.anexo }}</td>
         <td>{{ a.proforma }}</td>
-        <td>{{ a.archivo }}</td>
+        <td><a href="/media/{{a.archivo}}"><i class="fa fa-download fa-fw" aria-hidden="true"></i></a></td>
     </tr>
     {% empty %}
     <p class="respuesta">No hay elementos disponibles.</p>
