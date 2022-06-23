@@ -1,24 +1,29 @@
 {% extends "manual/indexm.html" %}
 {% load static %}
-{% block contenido %}
-
-<ul>
-    {% for p in circular %}
-    <li> {{ p.anno }} -- {{ p.numero }} -- {{ p.organismo }} -- {{ p.nombre }} -- {{ p.archivo }}
-    </li>
-    {% for p in proced %}
-    <li> {{ p.seccion }} -- {{ p.grupo }} -- {{ p.subgrupo }} -- {{ p.titulo }} -- {{ p.proforma }} -- {{ p.descrip }}
-        -- {{ p.archivo }}
-    </li>
-    {% for p in instruc %}
-    <li> {{ p.tipo }} -- {{ p.doc }} -- {{ p.anno }} -- {{ p.num }} -- {{ p.descrip }} -- {{ p.anexo }} -- {{ p.archivo
-        }} -- {{ p.tema }}
-    </li>
-    {% for p in biblioteca %}
-    <li> {{ p.nombre }} -- {{ p.categoría }} -- {{ p.zip }}
-    </li>
+{% block resultado %}
+<form mehotd="get">
+    <div
+        class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center text-center">
+        {{ filter.form.as_p }}
+        <button type="submit" class="newsletter_submit_btn trans_300" value="Buscar"><i class="fa fa-search fa-fw" aria-hidden="true"></i></button>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Teléfono </th>
+        </tr>
+    </thead>
+    {% for a in filter.qs %}
+    <tr>
+        <th scope="row">{{ a.nombre }}</th>  
+        <td>{{ a.telef }}</td>
+       
+    </tr>
     {% empty %}
-    <p>No hay coincidencias.</p>
+    <p class="respuesta">No hay elementos disponibles.</p>
     {% endfor %}
-</ul>
+</table>
+
 {% endblock %}

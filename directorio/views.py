@@ -1,6 +1,9 @@
 from django.shortcuts import render
+
+from .filters import OtrosEspaciosFilter, PersonaFilter, CEFilter
 from .models import Persona, Centro_Externo, OtrosEspacios
 from django.http import HttpResponseRedirect, HttpResponseNotFound
+from django.contrib.postgres.search import SearchVector
 
 
 # Create your views here.
@@ -12,28 +15,42 @@ def principal(request):
 # ********************** Personal **********************************
 def listado_personal(request):
     # creando el contexto
-    contexto = {'personal': Persona.objects.all().order_by('area')}
+    contexto = {}
+    contexto['filter'] = PersonaFilter(request.GET, queryset=Persona.objects.all())
     # devolviendo el contexto
-    # hacer html
     return render(request, 'directorio/listado_personal.html', contexto)
 
 
 def listado_CE(request):
     # creando el contexto
-    contexto = {'centro_ext': Centro_Externo.objects.all()}
+    contexto = {}
+    contexto['filter'] = CEFilter(request.GET, queryset=Centro_Externo.objects.all())
     # devolviendo el contexto
     return render(request, 'directorio/listado_CE.html', contexto)
+
+def listado_OtrosEspacios(request):
+    # creando el contexto
+    contexto = {}
+    contexto['filter'] = OtrosEspaciosFilter(request.GET, queryset=OtrosEspacios.objects.all())
+    # devolviendo el contexto
+    return render(request, 'directorio/resp_busqueda.html', contexto)
 
 
 def buscar(request):
     contexto = {}
     if request.GET.get('submit'):
         if request:
-            contexto['persona'] = Persona.objects.filter(request)
-            contexto['centro_ext'] = Centro_Externo.objects.filter(request)
-            contexto['otro'] = OtrosEspacios.objects.filter(request)
-            return render('directorio/resp_busqueda', contexto)
+            if listado_personal(request).exists():
+                return render('directorio/listado_personal.html', contexto)
+            if listado_CE(request).exists():
+                return render('directorio/listado_CE.html', contexto)
+            if listado_OtrosEspacios(request).exists():
+                return render('directorio/resp_busqueda.html', contexto)
+            # contexto['filter'] = Persona.objects.filter(request)
+            # contexto['centro_ext'] = Centro_Externo.objects.filter(request)
+            # contexto['otro'] = OtrosEspacios.objects.filter(request)
+            # return render('directorio/resp_busqueda', contexto)
         else:
             print(
                 'Los valores proporcionados no se corresponden con los criterios de búsqueda')
-        return render('directorio/resp_busqueda', contexto)
+        return render('directorio/principal.html', contexto)
