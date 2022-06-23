@@ -21,28 +21,57 @@
                 </div>
             </div>
         </div>
-        <div class="buttons_container text-center">
-            <div class="button button_line_1 text-center trans_200"><a
-                    href="{% url 'directorio:lista_persona' %}">Personal de FINTUR</a></div>
-            <div class="button button_line_1 text-center trans_200"><a href="{% url 'directorio:lista_ce' %}">Centros
-                    Externos</a></div>
-        </div>
-        <form action="resp_busqueda">
-            <div
-                class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center text-center">
-                <input class="newsletter_email form-control" placeholder="Nombre, apellido, direccion, cargo..." required="required"
-                    data-error="Se requiere al menos una palabra.">
-                <button type="submit" class="newsletter_submit_btn trans_300" value="Submit">Buscar</button>
+        <div class="resultado text-center">
+            <div class="container">
+                {% block resultado %}
+                <div class="buttons_container text-center">
+                    <div class="button button_line_1 text-center trans_200"><a
+                            href="{% url 'directorio:lista_persona' %}">Personal de FINTUR</a></div>
+                    <div class="button button_line_1 text-center trans_200"><a
+                            href="{% url 'directorio:lista_ce' %}">Centros
+                            Externos</a></div>
+                    <div class="button button_line_1 text-center trans_200"><a href="../admin/">Otras Opciones</a></div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="newsletter_form_container mx-auto">
+                            <!-- <form method="get" action="{{ filter.form.as_p }}">
+                                <div
+                                    class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+                                    <input id="newsletter_email" class="newsletter_email" type="text"
+                                        placeholder="Que desea buscar?" required="required"
+                                        data-error="Se requiere una palabra como minimo.">
+                                    <button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300"
+                                        value="Submit"><i class="fa fa-search fa-fw" aria-hidden="true"></i></button>
+                                </div>
+                            </form> -->
+                            <!-- <form mehotd="get">
+                                <div
+                                    class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center text-center">
+                                   
+                                    <button type="submit" class="newsletter_submit_btn trans_300" value="Buscar"><i
+                                            class="fa fa-search fa-fw" aria-hidden="true"></i></button>
+                                </div>
+                            </form> -->
+                            <form mehotd="get">
+                                <div
+                                    class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center text-center">
+                                    <input id="newsletter_email" class="newsletter_email" type="text"
+                                        placeholder="Que desea buscar?" required="required"
+                                        data-error="Se requiere una palabra como minimo.">
+                                        {{ filter.form.as_p }}
+                                    <button type="submit" class="newsletter_submit_btn trans_300" value="Buscar"><i
+                                            class="fa fa-search fa-fw" aria-hidden="true"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                {% endblock %}
             </div>
-        </form>
-        <div class="buttons_container text-center">
-            <div class="button button_line_1 text-center trans_200"><a href="../admin/">Otras Opciones</a></div>
-        </div>
-    </div>
-    <div class="resultado text-center">
-        <div class="container">
-            {% block resultado %} {% endblock %}
         </div>
     </div>
 </div>
+
 {% endblock %}
