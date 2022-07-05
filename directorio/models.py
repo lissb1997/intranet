@@ -1,5 +1,7 @@
+from importlib.util import module_from_spec
 from pyexpat import model
 from django.db import models
+from django.contrib.auth.models import User 
 
 # Definicion de una persona
 class Persona(models.Model):
@@ -18,7 +20,7 @@ class Persona(models.Model):
     objects = models.Manager()
     nombre = models.CharField('Nombre', max_length=50, help_text= 'Entre el nombre')
     apellidos = models.CharField('Apellidos',max_length=50, help_text= 'Entre el apellido')
-    usuario = models.CharField('Usuario', max_length=10, help_text='Entre el usuario', blank=True, null=True) #necesito que me tome el usuario de la clase User del autenticar
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, max_length=50, default='Prueba', null=True) 
     area = models.CharField('Área', max_length=50, help_text='Entre el área a la que pertenece', choices = SHIRT_AREA) 
     cargo = models.CharField('Cargo', max_length=50, help_text='Entre el cargo que ocupa', blank=True, null=True)
     ext_telef = models.CharField('Extención de Teléfono', max_length=3,blank=True, help_text='Entre la extención telefónica')

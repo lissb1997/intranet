@@ -6,7 +6,7 @@ class AsistenciaAdmin(admin.ModelAdmin):
   """Admin View para el modelo asistencia"""
   
   list_display = (
-    'nombre',
+    'usuario',
     'hora_entrada_M',
     'hora_salida_M',
     'hora_entrada_T',

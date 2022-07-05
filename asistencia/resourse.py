@@ -7,11 +7,11 @@ from import_export import resources
 class AsistenciaResource(resources.ModelResource):
     class Meta:
         model = Asistencia
-        fields = ('fecha_actual', 'nombre', 'hora_entrada_M',
+        fields = ('fecha_actual', 'usuario', 'hora_entrada_M',
                   'hora_salida_M', 'hora_entrada_T', 'hora_salida_T',
                   'vacaciones_Inicio', 'vacaciones_Fin', 'autorizo',
                   'observaciones')
-        export_order = ('fecha_actual', 'nombre', 'hora_entrada_M',
+        export_order = ('fecha_actual', 'usuario', 'hora_entrada_M',
                         'hora_salida_M', 'hora_entrada_T', 'hora_salida_T',
                         'vacaciones_Inicio', 'vacaciones_Fin', 'autorizo',
                         'observaciones')

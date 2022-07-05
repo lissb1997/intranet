@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User 
 
 
 # from django.forms import ValidationError
@@ -32,9 +33,9 @@ class Asistencia(models.Model):
     # null=True, help_text='Defina hasta que fecha desea vacaciones el próximo mes')
     autorizo = models.BooleanField(max_length=50, blank=True, null=True)  # arreglar
     observaciones = models.CharField('Observaciones', max_length=200, blank=True,
-                                     help_text='desea agregar algún comentario al Especialista de Recursos Humanos')
-    nombre = models.CharField(blank=False, null=False, max_length=200)
-    # persona = models.ForeignKey(Persona, on_delete=models.CASCADE, blank=True, null=True)
+                                     help_text='Desea agregar algún comentario al Especialista de Recursos Humanos')
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, max_length=50, default='Prueba')
+ 
 
     class Meta:
         """Meta definicion para la clase asistencia"""
