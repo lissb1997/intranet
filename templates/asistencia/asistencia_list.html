@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th scope="col">Fecha</th>
-      <th scope="col">Nombre</th>
       <th scope="col">Entrada Mañana</th>
       <th scope="col">Salida Mañana</th>
       <th scope="col">Entrada Tarde</th>
@@ -13,10 +12,9 @@
       <th scope="col">Acciones</th>
     </tr>
   </thead>
-  {% for a in asistencia_list %}
+  {% for a in asistencia %}
   <tr>
     <th scope="row">{{ a.fecha_actual }}</th>
-    <td>{{ a.nombre }}</td>
     <td>{{ a.hora_entrada_M }}</td>
     <td>{{ a.hora_salida_M }}</td>
     <td>{{ a.hora_entrada_T }}</td>
@@ -27,6 +25,25 @@
   {% empty %}
   <p class="respuesta">No hay elementos disponibles.</p>
   {% endfor %}
+  <!-- {# Pagination Section #} -->
+{% if is_paginated %}
+    <div id="al-paginate">
+        <ul class="strip-list al-pgnt-list">
+            {% if page_obj.has_previous %}
+                <li class="pull-left">
+                    <a href="{% url 'asistencia_list' %}?page={{ page_obj.previous_page_number }}
+                    {% if request.GET.a %}&account={{ request.GET.a }}{% endif %}">Anterior</a>
+                </li>
+            {% endif %}
+            {% if page_obj.has_next %}
+                <li class="pull-right">
+                    <a href="{% url 'asistencia_list' %}?page={{ page_obj.next_page_number }}
+                    {% if request.GET.a %}&account={{ request.GET.a }}{% endif %}">Siguiente</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}
 </table>
 <div>
     <a href="{% url 'asistencia:create' %}" class="btn btn-primary">Nueva</a>

@@ -1,3 +1,4 @@
+from itertools import groupby
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.views.generic.list import ListView
@@ -16,16 +17,20 @@ from django.http import HttpResponseRedirect, HttpResponseNotFound
 def principal(request):
     return render(request, 'asistencia/principal_asistencia.html')
 
-class AsistenciaBaseView(View):
-    model = Asistencia
-    fields = '__all__'
-    success_url = reverse_lazy('asistencia:list')
-
+# 
 @method_decorator(login_required, name='dispatch')
-class AsistenciaListView(AsistenciaBaseView, ListView):
-    """View to list all asistencia"""
-    # def get_queryset(self):
-        # return super().get_queryset().filter(nombre=User.get_full_name)
+class AsistenciaListView(ListView):
+    model = Asistencia
+    template_name = 'asistencia/asistencia_list.html'
+    context_object_name = 'asistencia'
+    paginate_by = 1
+    
+    def get_queryset(self):
+        asist_list = Asistencia.objects.filter(usuario= self.request.user)
+        return asist_list
+    # @method_decorator(login_required)
+    # def dispatch(self, *args, **kwargs):
+    #     return super(AsistenciaListView, self).dispatch(*args, **kwargs)
     
 @method_decorator(login_required, name='dispatch')
 class AsistenciaCreateView(CreateView):
@@ -64,3 +69,15 @@ def autorizar(request):
     # el listado debe ser ordenado por trabajador y que se pueda cambiar todos los estados a true o uno a uno
 
     pass
+@method_decorator(login_required, name='dispatch')
+class AsistenciaInvListView(ListView):
+    model = Asistencia
+    template_name = 'asistencia/asistencia_list.html'
+    context_object_name = 'asistencia'
+    paginate_by = 10
+    
+    def get_queryset(self):
+        asist_list = Asistencia.objects.filter(usuario=Asistencia.usuario)
+        ordenado = asist_list.order_by(cargo=Persona.area)
+        return asist_list
+    

@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 intranet/settings.py
 db.sqlite3
+media/documentos
