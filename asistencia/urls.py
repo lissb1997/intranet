@@ -12,4 +12,5 @@ urlpatterns = [
     path('create', views.AsistenciaCreateView.as_view(), name='create'),
     path('update/<int:pk>', views.AsistenciaUpdateView.as_view(), name='update'),
     path('autorizar', views.autorizar, name='autorizar'),
+    path('faltados', views.AsistenciaDiasFaltadosListView.as_view(), name='faltados')
 ]

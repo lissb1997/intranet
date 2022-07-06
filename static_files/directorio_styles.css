@@ -266,6 +266,9 @@ section
 {
 	padding: 0px !important;
 }
+label{
+	display: none;
+}
 
 /*********************************
 3. Header
@@ -397,9 +400,9 @@ section
 {
 	display: block;
 	position: relative;
-	font-size: 18px;
+	/* font-size: 18px; */
 	font-weight: 500;
-	color: #FFFFFF;
+	color: #0d0d0d;
 	padding-left: 12px;
 }
 
@@ -885,6 +888,48 @@ section
 	font-weight: 500;
 	margin-top: 7px;
 }
+/* mis configuraciones de los botones */
+.buttons_container
+{
+	margin-top: 50px;
+	align-items: center;
+}
+.button_color_1
+{
+	background: #009cde;
+}
+.button_color_3
+{
+	background: #dfe1e2;
+}
+.button_color_1 a
+{
+	color: #FFFFFF;
+}
+.button_color_2
+{
+	background: #1a1a1a;
+}
+.button_color_2 a
+{
+	color: #FFFFFF;
+}
+.button_line_1
+{
+	background: transparent;
+	border: solid 2px #ffb606;
+}
+
+.button_line_1
+{
+	background: transparent;
+	border: solid 2px #3c06ff;
+}
+.button_line_1 a
+{
+	color: #4806ff;
+}
+
 
 /*********************************
 10. Footer
@@ -923,6 +968,7 @@ section
 	padding-left: 27px;
 	font-weight: 500;
 	color: #1a1a1a;
+	background: #e6eaea;
 }
 .newsletter_email:focus
 {
@@ -938,7 +984,7 @@ section
 	font-size: 14px;
 	font-weight: 500;
 	cursor: pointer;
-	margin-top: 30px;
+	margin-top: 20px;
 }
 .newsletter_submit_btn:focus
 {
@@ -1097,6 +1143,7 @@ section
 input:last-of-type {
     margin-bottom: 0px;
 	margin-top: 30px;
+	width: 400px;
 }
 
 .input_field:focus {

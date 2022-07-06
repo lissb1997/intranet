@@ -83,6 +83,64 @@ p
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
+#text{
+	margin-top: 15px;
+
+}
+#id_titulo__icontains 
+{
+size: 20px;
+margin-right: 15px;
+width: 200px;
+margin-top: 0px;
+}
+#id_organismo{
+size: 20px;
+margin-right: 15px;
+width: 200px;
+margin-top: 0px;
+} 
+
+#id_anno{
+size: 20px;
+margin-right: 15px;
+width: 200px;
+margin-top: 0px;
+}
+#id_grupo{
+size: 20px;
+margin-right: 15px;
+width: 200px;
+margin-top: 0px;
+}
+#id_subGrupo{
+size: 20px;
+margin-right: 15px;
+width: 200px;
+margin-top: 0px;
+}
+#id_numero{
+	size: 20px;
+	margin-right: 15px;
+	width: 200px;
+	margin-top: 0px;
+	}
+#id_nombre__icontains{
+	size: 20px;
+	margin-right: 15px;
+	width: 200px;
+	margin-top: 0px;
+	}
+#id_categoria{
+	size: 20px;
+	margin-right: 15px;
+	width: 200px;
+	margin-top: 0px;
+}
+table
+{
+	margin-top: 15px;
+}
 p a
 {
 	display: inline;
@@ -397,7 +455,7 @@ section
 	display: block;
 	position: relative;
 	font-weight: 500;
-	color: #FFFFFF;
+	color: #0d0d0d;
 	padding-left: 12px;
 }
 
@@ -753,6 +811,32 @@ section
 .buttons_container
 {
 	margin-top: 50px;
+	align-items: center;
+}
+.button_color_1
+{
+	background: #009cde;
+}
+.button_color_3
+{
+	background: #dfe1e2;
+}
+.button_color_1 a
+{
+	color: #FFFFFF;
+}
+.button_color_2
+{
+	background: #1a1a1a;
+}
+.button_color_2 a
+{
+	color: #FFFFFF;
+}
+.button_line_1
+{
+	background: transparent;
+	border: solid 2px #ffb606;
 }
 
 .button_line_1
@@ -896,6 +980,10 @@ section
 	width: 60%;
 	margin-top: 48px;
 }
+.newsletter_form{
+	margin-top: 30px;
+	align-items: center;
+}
 .newsletter_email
 {
 	width: calc(100% - 164px);
@@ -904,6 +992,7 @@ section
 	padding-left: 27px;
 	font-weight: 500;
 	color: #1a1a1a;
+	background: #e6eaea;
 }
 .newsletter_email:focus
 {
@@ -919,7 +1008,7 @@ section
 	font-size: 14px;
 	font-weight: 500;
 	cursor: pointer;
-	margin-top: 30px;
+	margin-top: 10px;
 }
 .newsletter_submit_btn:focus
 {
@@ -1072,6 +1161,11 @@ section
 input:last-of-type {
     margin-bottom: 0px;
 	margin-top: 30px;
+	width: 400px;
+}
+.input_field button{
+	margin-top: 10px;
+	width: 100px;
 }
 
 .input_field:focus {
@@ -1091,6 +1185,7 @@ input:last-of-type {
     border: none;
     cursor: pointer;
 }
+
 
 .search_submit_button:hover {
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
