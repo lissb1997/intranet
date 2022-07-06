@@ -1,14 +1,11 @@
+from atexit import register
 from django.contrib import admin
-from .models import Asistencia
 
-@admin.register(Asistencia)
-class AsistenciaAdmin(admin.ModelAdmin):
-  """Admin View para el modelo asistencia"""
-  
-  list_display = (
-    'usuario',
-    'hora_entrada_M',
-    'hora_salida_M',
-    'hora_entrada_T',
-    'hora_salida_T',
-  )
+from .resourse import AsistenciaResource
+from .models import Asistencia
+from import_export.admin import ImportExportModelAdmin
+
+class AsistenciaAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    resource_class = AsistenciaResource
+
+admin.site.register(Asistencia,AsistenciaAdmin)
