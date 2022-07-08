@@ -13,6 +13,8 @@ from asistencia.forms import AsistenciaForm
 from asistencia.models import Asistencia
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseNotFound
+
+from .filters import AreaFilter, DiasFilter
 from .resourse import AsistenciaResource
 
 
@@ -81,6 +83,17 @@ class AsistenciaDiasFaltadosListView(ListView):
         context = {}
         context['Nombre'] = Persona.objects.filter(usuario=self.request.user)
         return context
+
+@method_decorator(login_required, name='dispatch')   
+def listado_Faltas(request):
+    # creando el contexto
+    contexto = {}
+    contexto['filter'] = AreaFilter(request.GET, queryset=Persona.objects.all())
+    # for a in context:
+    #     cant_dias=DiasFilter(queryset=Asistencia.objects.filter(a)).count()
+    #     contexto['faltas']=24-cant_dias
+    return render(request, 'asistencia/filtrado.html', contexto)
+
 
 
 # @method_decorator(login_required, name='dispatch')

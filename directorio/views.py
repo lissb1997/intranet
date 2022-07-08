@@ -38,13 +38,14 @@ def listado_OtrosEspacios(request):
 
 def buscar(request):
     contexto = {}
-    if request.GET.get('submit'):
-        if request:
-            if listado_personal(request).exists():
+    if request.method == 'GET' and 'q' in request.GET:
+        q = request.GET['q']
+        if q:
+            if listado_personal(q).exists():
                 return render('directorio/listado_personal.html', contexto)
-            if listado_CE(request).exists():
+            if listado_CE(q).exists():
                 return render('directorio/listado_CE.html', contexto)
-            if listado_OtrosEspacios(request).exists():
+            if listado_OtrosEspacios(q).exists():
                 return render('directorio/principal_directorio.html', contexto)
         else:
             print(

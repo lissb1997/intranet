@@ -9,3 +9,6 @@ def principal_index(request):
 
     # Devolviendo el documento final al usuario
     return render(request, 'index.html', contexto)
+
+def fintur(request):
+    return render (request, 'fintur.html')
