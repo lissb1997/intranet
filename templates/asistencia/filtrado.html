@@ -1,0 +1,60 @@
+{% extends 'asistencia/principal_asistencia.html' %}
+{% block resultado %}
+<div class="col text-center">
+    <h1>Dias faltados</h1>
+    <div class="newsletter_form_container mx-auto"> -->
+         <form mehotd="get">
+            <div
+                class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center text-center">
+                <input id="newsletter_email" class="newsletter_email" type="text" placeholder="Area que desea analizar"
+                    required="required" data-error="Se requiere una palabra como minimo."> 
+                {{ filter.form.as_p }}
+                <button type="submit" class="newsletter_submit_btn trans_300" value="Buscar"><i
+                        class="fa fa-search fa-fw" aria-hidden="true"></i></button>
+            </div>
+        </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Area</th>
+                    <th scope="col">Cantidad de dias faltados</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            {% for a in filter.qs %}
+            <tr>
+                <th scope="row">{{ a.nombre }}</th>
+                <td>{{ a.area }}</td>
+                <td>{{ a.faltas }}</td>
+                <td><a href='{% url "asistencia:list" pk=a.usuario %}'>Revisar</a></td>
+            </tr>
+            {% empty %}
+            <p class="respuesta">No hay elementos disponibles.</p>
+            {% endfor %}
+
+            <!-- {% if is_paginated %}
+            <div id="al-paginate">
+                <ul class="strip-list al-pgnt-list">
+                    {% if page_obj.has_previous %}
+                    <li class="pull-left">
+                        <a href="{% url 'filtrado' %}?page={{ page_obj.previous_page_number }}
+                      {% if request.GET.a %}&account={{ request.GET.a }}{% endif %}">Anterior</a>
+                    </li>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <li class="pull-right">
+                        <a href="{% url 'filtrado' %}?page={{ page_obj.next_page_number }}
+                      {% if request.GET.a %}&account={{ request.GET.a }}{% endif %}">Siguiente</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %} -->
+        </table>
+        <div>
+            <a href="{% url 'inicio' %}" class="btn btn-primary">Salir</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

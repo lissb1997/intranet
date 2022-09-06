@@ -18,5 +18,4 @@ urlpatterns = [
     path('listado_biblioteca', views.listado_bib, name='list_bib'),
     path('resp_busqueda', views.buscar, name='buscar'),
     path(r'^descargar/(?P<file_name>.+)$', views.descargar, name='download'),
-
 ]

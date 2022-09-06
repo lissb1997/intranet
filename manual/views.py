@@ -46,7 +46,6 @@ def listado_circulares(request):
 def listado_instrucciones(request):
     # crando el contexto
     contexto = {}
-    # contexto['instruc'] = Instruc.objects.all()
     contexto['filter'] = InstrucFilter(
         request.GET, queryset=Instruc.objects.all())
     # paginator = Paginator(contexto,10)

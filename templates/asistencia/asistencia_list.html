@@ -8,6 +8,8 @@
       <th scope="col">Salida Mañana</th>
       <th scope="col">Entrada Tarde</th>
       <th scope="col">Salida Tarde</th>
+      <th scope="col">Fecha inicio de Vacaciones</th>
+      <th scope="col">Fecha fin de Vacaciones</th>
       <th scope="col">Observaciones</th>
       <th scope="col">Acciones</th>
     </tr>
@@ -19,6 +21,8 @@
     <td>{{ a.hora_salida_M }}</td>
     <td>{{ a.hora_entrada_T }}</td>
     <td>{{ a.hora_salida_T }}</td>
+    <td>{{ a.vacaciones_Inicio }}</td>
+    <td>{{ a.vacaciones_Fin }}</td>
     <td>{{ a.observaciones }}</td>
     <td><a href='{% url "asistencia:update" pk=a.id %}'>editar</a></td>
   </tr>
