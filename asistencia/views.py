@@ -1,21 +1,20 @@
-from itertools import groupby
-from multiprocessing import context
-from urllib import request, response
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.views import View
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, FormView
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.utils.decorators import method_decorator
 from django.urls import reverse, reverse_lazy
 from directorio.models import Persona
-from asistencia.forms import AsistenciaForm
-from asistencia.models import Asistencia
+from .forms import AsistenciaForm
+from .models import Asistencia
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseNotFound
-
+from django.contrib.auth.models import User
 from .filters import AreaFilter, DiasFilter
-from .resourse import AsistenciaResource
+
+
+
 
 
 # ****************** Principal************************************
@@ -45,6 +44,7 @@ class AsistenciaCreateView(CreateView):
     success_url = reverse_lazy('asistencia:list')
 
 
+
 @method_decorator(login_required, name='dispatch')
 class AsistenciaUpdateView(UpdateView):
     """View to edit a new asistencia"""
@@ -55,7 +55,7 @@ class AsistenciaUpdateView(UpdateView):
 
 # ******************** Autorizar *******************************************
 
-
+@method_decorator(login_required, name='dispatch')
 def autorizar(request):
     # si estas autenticado y en cargo eres director muestras la asistencia de
     # los subordinados del area y pones en true o false el autorizo de la
@@ -72,28 +72,29 @@ class AsistenciaDiasFaltadosListView(ListView):
     context_object_name = 'faltas'
     paginate_by = 10
 
-    def get_queryset(self):
-        cantidad_dias = Asistencia.objects.filter(
-            usuario=self.request.user).count()
-        # nombre_Usuario = Persona.objects.filter(usuario=self.request.user)
-        # resultado =['cantidad_dias','nombre_Usuario']
-        return cantidad_dias
-
-    def get_context_data(self, **kwargs):
-        context = {}
-        context['Nombre'] = Persona.objects.filter(usuario=self.request.user)
-        return context
-
-@method_decorator(login_required, name='dispatch')   
+    def get_queryset(request):
+        #  creando el contexto
+        contexto = {}
+        contexto['filter'] = AreaFilter(
+            request.GET, queryset=Persona.objects.all())
+        for a in contexto.get("usuario"):
+            contexto['cant_dias'] = DiasFilter(
+                queryset=Asistencia.objects.filter(a))
+            contexto['nombre'] = Persona.objects.filter(
+                a.usuario).get('nombre', 'apellidos')
+            contexto['faltas'] = 24 - len(contexto['cant_dias'])
+        return contexto
+    
+@method_decorator(login_required, name='dispatch')
 def listado_Faltas(request):
     # creando el contexto
-    contexto = {}
-    contexto['filter'] = AreaFilter(request.GET, queryset=Persona.objects.all())
-    # for a in context:
-    #     cant_dias=DiasFilter(queryset=Asistencia.objects.filter(a)).count()
-    #     contexto['faltas']=24-cant_dias
-    return render(request, 'asistencia/filtrado.html', contexto)
-
+    # contexto = {}
+    # contexto['filter'] = AreaFilter(request.GET, queryset=Persona.objects.all())
+    # for a in contexto.get("usuario"):
+    #     contexto['cant_dias']=DiasFilter(queryset=Asistencia.objects.filter(a))
+    #     contexto['nombre']= Persona.objects.filter(a.usuario).get('nombre', 'apellidos')
+    #     contexto['faltas']= 24 - len(contexto['cant_dias'])
+    return render(request, 'asistencia/filtrado.html')
 
 
 # @method_decorator(login_required, name='dispatch')
@@ -105,4 +106,3 @@ def listado_Faltas(request):
 #         dataset.xls, content_type='application/vnd.ms-excel')
 #     response['Content-Disposition'] = 'attachment; filename="persons.xls"'
 #     return response
-    

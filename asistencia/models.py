@@ -1,3 +1,4 @@
+from datetime import time
 from django.db import models
 from django.contrib.auth.models import User 
 
@@ -18,19 +19,19 @@ class Asistencia(models.Model):
     objects = models.Manager()
     fecha_actual = models.DateField(auto_now_add=True)
     hora_entrada_M = models.TimeField('Hora de Entrada', auto_now_add=False,
-                                      help_text='Defina su hora de llegada a la entidad en el horario de la mañana')
+                                      help_text='Defina su hora de llegada a la entidad en el horario de la mañana', default=time(8,00))
     hora_salida_M = models.TimeField('Hora salida de la mañana', auto_now_add=False,
-                                     help_text='Defina su horario de salida al almuerzo')
+                                     help_text='Defina su horario de salida al almuerzo', default=time(12,00))
     hora_entrada_T = models.TimeField('Hora entrada de la tarde', auto_now_add=False,
-                                      help_text='Defina su hora de entrada de la tarde')
+                                      help_text='Defina su hora de entrada de la tarde', default=time(12,30))
     hora_salida_T = models.TimeField('Hora de salida de la tarde', auto_now_add=False,
-                                     help_text='Defina su horario de salida de la entidad')
-    # vacaciones = models.DurationField('futuras Vacaciones', null=True, blank=True,
-    #                                   help_text='Reserve los dias que desea de vacaciones')
-    # vacaciones_Inicio = models.DateField('Fecha de inicio de las futuras vacaciones',
-    # null=True, blank=True, help_text='Defina a partir de que fecha desea vacaciones el próximo mes')
-    # vacaciones_Fin = models.DateField('Fecha de las futuras vacaciones', blank=True,
-    # null=True, help_text='Defina hasta que fecha desea vacaciones el próximo mes')
+                                     help_text='Defina su horario de salida de la entidad', default=time(5,20))
+    #vacaciones = models.DurationField('futuras Vacaciones', null=True, blank=True,
+                                       #help_text='Reserve los dias que desea de vacaciones')
+    vacaciones_Inicio = models.DateField('Fecha de inicio de las futuras vacaciones',
+     null=True, blank=True, help_text='Defina a partir de que fecha desea vacaciones el próximo mes')
+    vacaciones_Fin = models.DateField('Fecha de las futuras vacaciones', blank=True,
+     null=True, help_text='Defina hasta que fecha desea vacaciones el próximo mes')
     autorizo = models.BooleanField(max_length=50, blank=True, null=True)  # arreglar
     observaciones = models.CharField('Observaciones', max_length=200, blank=True,
                                      help_text='Desea agregar algún comentario al Especialista de Recursos Humanos')

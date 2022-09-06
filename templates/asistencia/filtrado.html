@@ -2,13 +2,13 @@
 {% block resultado %}
 <div class="col text-center">
     <h1>Dias faltados</h1>
-    <div class="newsletter_form_container mx-auto">
-        <form mehotd="get">
+    <div class="newsletter_form_container mx-auto"> -->
+         <form mehotd="get">
             <div
                 class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center text-center">
                 <input id="newsletter_email" class="newsletter_email" type="text" placeholder="Area que desea analizar"
-                    required="required" data-error="Se requiere una palabra como minimo.">
-                {{ resultado.form.as_p }}
+                    required="required" data-error="Se requiere una palabra como minimo."> 
+                {{ filter.form.as_p }}
                 <button type="submit" class="newsletter_submit_btn trans_300" value="Buscar"><i
                         class="fa fa-search fa-fw" aria-hidden="true"></i></button>
             </div>
@@ -17,21 +17,23 @@
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Cantidad de dias</th>
+                    <th scope="col">Area</th>
+                    <th scope="col">Cantidad de dias faltados</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
-            {% for a in faltas %}
+            {% for a in filter.qs %}
             <tr>
-                <th scope="row">{{ a.nombre_Usuario }}</th>
-                <td>{{ a.cantidad_dias }}</td>
-                <td><a href='{% url "asistencia:list" %}'>Revisar</a></td>
+                <th scope="row">{{ a.nombre }}</th>
+                <td>{{ a.area }}</td>
+                <td>{{ a.faltas }}</td>
+                <td><a href='{% url "asistencia:list" pk=a.usuario %}'>Revisar</a></td>
             </tr>
             {% empty %}
             <p class="respuesta">No hay elementos disponibles.</p>
             {% endfor %}
-            <!-- {# Pagination Section #} -->
-            {% if is_paginated %}
+
+            <!-- {% if is_paginated %}
             <div id="al-paginate">
                 <ul class="strip-list al-pgnt-list">
                     {% if page_obj.has_previous %}
@@ -48,7 +50,7 @@
                     {% endif %}
                 </ul>
             </div>
-            {% endif %}
+            {% endif %} -->
         </table>
         <div>
             <a href="{% url 'inicio' %}" class="btn btn-primary">Salir</a>

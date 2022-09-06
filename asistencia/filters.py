@@ -13,7 +13,7 @@ class AreaFilter(django_filters.FilterSet):
     class Meta:
         model: Persona
         fields = {
-            'area':['exact']
+            'area':['exact'],
         }
     # def filter_search(self, queryset, name, value):
     #     search_vector = SearchVector( 'area')
